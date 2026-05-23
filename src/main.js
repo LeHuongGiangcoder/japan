@@ -33,12 +33,6 @@ tlEntrance.to(".entrance-text", {
   ease: "power1.inOut"
 }, 0);
 
-// Fade out the entrance background so the Japan scene behind it becomes visible
-tlEntrance.to("#entrance-scene .bg-img", {
-  opacity: 0,
-  ease: "power1.inOut"
-}, 0);
-
 // Japan Scene Animations
 // When scrolling into Japan scene, slide components up naturally
 const tlJapan = gsap.timeline({
