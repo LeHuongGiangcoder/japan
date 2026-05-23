@@ -15,19 +15,151 @@
 :root {
   --font-primary: 'Tan Buster', sans-serif;
   --font-secondary: 'Brittany Signature', cursive;
+  --color-red: #de4430; /* Japan red */
 }
 
 body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  background-color: #f4f1ea; /* Retro paper feel */
+  background-color: #f4f1ea;
   font-family: var(--font-primary);
   overflow-x: hidden;
 }
 
 #app {
   width: 100%;
-  min-height: 100vh;
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Entrance Scene */
+#entrance-scene {
+  z-index: 10; /* Above japan scene initially */
+}
+
+.entrance-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.arch-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.entrance-text {
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5vh; /* Push it up slightly to fit in the arch opening */
+}
+
+.text-script {
+  font-family: var(--font-secondary);
+  font-size: 3vw;
+  color: #1a1a1a;
+  margin: -0.5vw 0;
+}
+
+.text-main {
+  font-family: var(--font-primary);
+  font-size: 7vw;
+  color: var(--color-red);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Japan Scene */
+#japan-scene {
+  z-index: 5;
+}
+
+.japan-components {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.j-comp {
+  position: absolute;
+  /* Add default styles if needed, we'll position them with specific classes */
+}
+
+/* Base layering */
+.j-z1 { z-index: 1; width: 60%; top: 10%; left: 20%; } /* Fuji */
+.j-z2 { z-index: 2; width: 40%; bottom: 10%; left: 30%; } /* Building center */
+.j-z3 { z-index: 3; width: 35%; bottom: 5%; left: 10%; } /* Building left */
+.j-z4 { z-index: 4; width: 25%; bottom: 20%; right: 15%; } /* Building right */
+.j-z5 { z-index: 5; width: 40%; top: 10%; left: -5%; } /* Flower tree */
+.j-z6 { z-index: 6; width: 40%; bottom: 5%; left: 30%; } /* Japan Flag banner */
+.j-z7 { z-index: 7; width: 10%; top: 20%; left: 25%; } /* Bird origami */
+.j-z8 { z-index: 8; width: 20%; top: 35%; right: 20%; } /* Cloud */
+.j-z9 { z-index: 9; width: 20%; bottom: 15%; right: 10%; } /* Crane */
+.j-z10 { z-index: 10; width: 20%; bottom: 5%; right: 25%; } /* Cat */
+.j-z11 { z-index: 11; width: 15%; bottom: 2%; right: 35%; } /* Sushi */
+.j-z12 { z-index: 12; width: 15%; bottom: 5%; left: 20%; } /* Cat mask */
+.j-z13 { z-index: 13; width: 20%; top: 0; right: 0; } /* Paper rip */
+.j-z14 { z-index: 14; width: 15%; top: 0; left: 0; } /* Dried flower */
+.j-z15 { z-index: 15; width: 30%; bottom: 10%; left: -5%; } /* Left hand */
+.j-z16 { z-index: 16; width: 30%; top: 10%; right: 0; } /* Right hand */
+
+/* Placeholders */
+.placeholder {
+  background-color: #e0dcd3;
+  display: flex;
+  flex-direction: column;
+  color: #555;
+  border-top: 2px dashed #ccc;
+}
+
+.placeholder h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
