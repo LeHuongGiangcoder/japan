@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Tan Buster';
+  src: url('/assets/TAN-Buster-Font/TAN-BUSTER-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brittany Signature';
+  src: url('/assets/brittany_signature/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-primary: 'Tan Buster', sans-serif;
+  --font-secondary: 'Brittany Signature', cursive;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f4f1ea; /* Retro paper feel */
+  font-family: var(--font-primary);
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
