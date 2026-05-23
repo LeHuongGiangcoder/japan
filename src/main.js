@@ -8,7 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 function resizeJapan() {
   const container = document.querySelector('.japan-components');
   // Scale to fit the smallest dimension to ensure nothing is ever cropped
-  const scale = Math.min(window.innerWidth / 1440, window.innerHeight / 900);
+  // We use 1000 instead of 900 to give the canvas breathing room for the text at the top
+  const scale = Math.min(window.innerWidth / 1440, window.innerHeight / 1000);
   container.style.transform = `translate(-50%, -50%) scale(${scale})`;
   
   // Pass scale to CSS so we can anchor elements to the true viewport edges

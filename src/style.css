@@ -133,8 +133,8 @@ body, html {
 .japan-components {
   position: absolute;
   width: 1440px; /* Assuming a 1440px canvas to hold the absolute coords */
-  height: 900px;
-  top: 50%;
+  height: 1000px; /* Increased canvas height to 1000px to give top/bottom breathing room */
+  top: 62%; /* Shifted further down to reduce bottom padding even more */
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -143,6 +143,33 @@ body, html {
 .j-comp {
   position: absolute;
   object-fit: contain;
+}
+
+/* Japan Text Overlay */
+.j-text {
+  z-index: 20;
+  top: -10px; /* Fits comfortably inside the 1000px canvas without clipping */
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none; /* Let clicks pass through if needed */
+}
+
+.j-text-year {
+  font-family: var(--font-primary);
+  font-size: 110px;
+  color: var(--color-red);
+  line-height: 0.8;
+  margin-bottom: 0;
+}
+
+.j-text-sub {
+  font-family: var(--font-secondary);
+  font-size: 70px;
+  color: #1a1a1a;
+  margin-top: -15px; /* Pull it up to overlap slightly with 2024 */
 }
 
 /* Base layering with exact pixel coordinates and rotation */
