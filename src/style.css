@@ -39,7 +39,6 @@ body, html {
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,35 +128,41 @@ body, html {
 
 .japan-components {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 1440px; /* Assuming a 1440px canvas to hold the absolute coords */
+  height: 900px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
 .j-comp {
   position: absolute;
-  /* Add default styles if needed, we'll position them with specific classes */
+  object-fit: contain;
 }
 
-/* Base layering */
-.j-z1 { z-index: 1; width: 60%; top: 10%; left: 20%; } /* Fuji */
-.j-z2 { z-index: 2; width: 40%; bottom: 10%; left: 30%; } /* Building center */
-.j-z3 { z-index: 3; width: 35%; bottom: 5%; left: 10%; } /* Building left */
-.j-z4 { z-index: 4; width: 25%; bottom: 20%; right: 15%; } /* Building right */
-.j-z5 { z-index: 5; width: 40%; top: 10%; left: -5%; } /* Flower tree */
-.j-z6 { z-index: 6; width: 40%; bottom: 5%; left: 30%; } /* Japan Flag banner */
-.j-z7 { z-index: 7; width: 10%; top: 20%; left: 25%; } /* Bird origami */
-.j-z8 { z-index: 8; width: 20%; top: 35%; right: 20%; } /* Cloud */
-.j-z9 { z-index: 9; width: 20%; bottom: 15%; right: 10%; } /* Crane */
-.j-z10 { z-index: 10; width: 20%; bottom: 5%; right: 25%; } /* Cat */
-.j-z11 { z-index: 11; width: 15%; bottom: 2%; right: 35%; } /* Sushi */
-.j-z12 { z-index: 12; width: 15%; bottom: 5%; left: 20%; } /* Cat mask */
-.j-z13 { z-index: 13; width: 20%; top: 0; right: 0; } /* Paper rip */
-.j-z14 { z-index: 14; width: 15%; top: 0; left: 0; } /* Dried flower */
-.j-z15 { z-index: 15; width: 30%; bottom: 10%; left: -5%; } /* Left hand */
-.j-z16 { z-index: 16; width: 30%; top: 10%; right: 0; } /* Right hand */
+/* Base layering with exact pixel coordinates and rotation */
+.j-z1 { z-index: 1; width: 663px; height: 663px; left: 447.5px; top: 91.8px; transform: rotate(0deg); }
+.j-z2 { z-index: 2; width: 486px; height: 486px; left: 610.5px; top: 335.8px; transform: rotate(0deg); }
+/* Swapped z3 and z4 */
+.j-z3 { z-index: 3; width: 580px; height: 580px; left: 202.5px; top: 305.8px; transform: rotate(0deg); }
+.j-z4 { z-index: 4; width: 528px; height: 528px; left: 797.5px; top: 261.8px; transform: rotate(0deg); }
+/* Flower tree anchored to viewport left, made larger and moved up */
+.j-z5 { z-index: 5; width: 850px; height: 850px; left: calc(720px - 50vw / var(--scale) - 200px); top: 50px; transform: rotate(-30deg); }
+.j-z6 { z-index: 6; width: 572px; height: 572px; left: 441.5px; top: 479.8px; transform: rotate(0deg); }
+.j-z7 { z-index: 7; width: 214.4px; height: 214.4px; left: 265.9px; top: 200.1px; transform: rotate(9.3deg); }
+.j-z8 { z-index: 8; width: 312px; height: 312px; left: 1035.5px; top: 233.8px; transform: rotate(0deg); }
+.j-z9 { z-index: 9; width: 445px; height: 445px; left: 1026.5px; top: 330.8px; transform: rotate(0deg); }
+.j-z10 { z-index: 10; width: 353px; height: 353px; left: 979.5px; top: 462.8px; transform: rotate(0deg); }
+.j-z11 { z-index: 11; width: 257px; height: 257px; left: 889.5px; top: 622.8px; transform: rotate(0deg); }
+.j-z12 { z-index: 12; width: 260px; height: 260px; left: 264.5px; top: 580.8px; transform: rotate(0deg); }
+.j-z13 { z-index: 13; width: 400px; height: 400px; left: 1185.5px; top: -71.2px; transform: rotate(0deg); }
+/* Dried flower tilted and anchored to top-left corner */
+.j-z14 { z-index: 14; width: 271px; height: 271px; left: calc(720px - 50vw / var(--scale) + 20px); top: calc(450px - 50vh / var(--scale) + 20px); transform: rotate(-45deg); }
+/* Left hand anchored to viewport left */
+.j-z15 { z-index: 15; width: 559px; height: 559px; left: calc(720px - 50vw / var(--scale) - 150px); top: 350px; transform: rotate(10deg); }
+/* Right hand anchored to viewport right edge, moved up and tilted down */
+.j-z16 { z-index: 16; width: 559px; height: 559px; left: calc(720px + 50vw / var(--scale) - 350px); top: 0px; transform: rotate(15deg); }
 
 /* Placeholders */
 .placeholder {

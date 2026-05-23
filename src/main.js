@@ -33,33 +33,40 @@ tlEntrance.to(".entrance-text", {
   ease: "power1.inOut"
 }, 0);
 
+// Responsive scale for Japan components to prevent cropping
+function resizeJapan() {
+  const container = document.querySelector('.japan-components');
+  // Scale to fit the smallest dimension to ensure nothing is ever cropped
+  const scale = Math.min(window.innerWidth / 1440, window.innerHeight / 900);
+  container.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  
+  // Pass scale to CSS so we can anchor elements to the true viewport edges
+  document.documentElement.style.setProperty('--scale', scale);
+}
+window.addEventListener('resize', resizeJapan);
+resizeJapan();
+
 // Japan Scene Animations
-// When scrolling into Japan scene, slide components up naturally
+// We trigger the animation based on the whole scene entering the viewport
 const tlJapan = gsap.timeline({
   scrollTrigger: {
     trigger: "#japan-scene",
-    start: "top bottom", // Starts when Japan scene enters viewport from bottom
-    end: "center center",
+    start: "top 80%", // Start sliding up when scene is 20% into the screen
+    end: "top 20%",   // Finish sliding up when it reaches near the top
     scrub: true
   }
 });
 
-// Select all components and give them a staggered slide-up effect
-gsap.utils.toArray(".j-comp").forEach((comp, i) => {
-  // Randomize initial Y offset slightly for a parallax feel
-  const yOffset = 50 + (Math.random() * 100); 
+// Select all components and slide them up together
+gsap.utils.toArray(".j-comp").forEach((comp) => {
+  // Randomize initial Y offset slightly for a parallax feel (sliding up from below)
+  const yOffset = 150 + (Math.random() * 200); 
   
-  gsap.from(comp, {
+  tlJapan.from(comp, {
     y: yOffset,
     opacity: 0,
-    duration: 1,
-    scrollTrigger: {
-      trigger: comp,
-      start: "top 90%", // When component's top hits 90% of viewport
-      end: "bottom center",
-      scrub: true
-    }
-  });
+    ease: "power1.out"
+  }, 0); // The '0' ensures all components animate at the exact same time on the timeline
 });
 
 
