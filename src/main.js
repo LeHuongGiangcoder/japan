@@ -4,35 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// GSAP Timeline for Entrance Zoom Out Effect
-// We pin the entrance scene, scale up the arch container massively so we "zoom through" it
-// and fade out the text.
-
-const tlEntrance = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#entrance-scene",
-    start: "top top",
-    end: "+=200%", // Increased scroll distance for smoother effect
-    scrub: true,
-    pin: true,
-    anticipatePin: 1
-  }
-});
-
-// Scale the arch massively to simulate walking through it
-tlEntrance.to(".arch-container", {
-  scale: 15,
-  transformOrigin: "50% 50%",
-  ease: "power1.inOut"
-}, 0);
-
-// Fade out the text as we zoom in
-tlEntrance.to(".entrance-text", {
-  opacity: 0,
-  scale: 1.5,
-  ease: "power1.inOut"
-}, 0);
-
 // Responsive scale for Japan components to prevent cropping
 function resizeJapan() {
   const container = document.querySelector('.japan-components');
@@ -46,27 +17,52 @@ function resizeJapan() {
 window.addEventListener('resize', resizeJapan);
 resizeJapan();
 
-// Japan Scene Animations
-// We trigger the animation based on the whole scene entering the viewport
-const tlJapan = gsap.timeline({
+// Initial states for Japan components
+gsap.set(".j-comp", { y: 300, opacity: 0 });
+
+// Master Timeline pinned to the entire app container
+const masterTl = gsap.timeline({
   scrollTrigger: {
-    trigger: "#japan-scene",
-    start: "top 80%", // Start sliding up when scene is 20% into the screen
-    end: "top 20%",   // Finish sliding up when it reaches near the top
-    scrub: true
+    trigger: "#app",
+    start: "top top",
+    end: "+=4000", // Large scroll distance for smooth transitions
+    scrub: 1, // Add smoothing
+    pin: true,
+    anticipatePin: 1
   }
 });
 
-// Select all components and slide them up together
-gsap.utils.toArray(".j-comp").forEach((comp) => {
-  // Randomize initial Y offset slightly for a parallax feel (sliding up from below)
-  const yOffset = 150 + (Math.random() * 200); 
-  
-  tlJapan.from(comp, {
-    y: yOffset,
-    opacity: 0,
-    ease: "power1.out"
-  }, 0); // The '0' ensures all components animate at the exact same time on the timeline
-});
+// Part 1: Entrance Arch zooms out and text fades (0 to 2 seconds on timeline)
+masterTl.to(".arch-container", {
+  scale: 15,
+  transformOrigin: "50% 50%",
+  ease: "power1.inOut",
+  duration: 2
+}, 0);
+
+masterTl.to(".entrance-text", {
+  opacity: 0,
+  scale: 1.5,
+  ease: "power1.inOut",
+  duration: 2
+}, 0);
+
+// Part 2: Entrance Arch fades out completely (2 to 2.5 seconds)
+masterTl.to(".entrance-wrapper", {
+  opacity: 0,
+  duration: 0.5
+}, 2);
+
+// Part 3: Japan scene components slide up (2.5 to 4.5 seconds)
+masterTl.to(".j-comp", {
+  y: 0,
+  opacity: 1,
+  duration: 2,
+  stagger: 0.05, // Slight stagger for a beautiful cascading assembly
+  ease: "power2.out"
+}, 2.5);
+
+// Add a buffer at the end so the scene holds on screen
+masterTl.to({}, { duration: 1 });
 
 
