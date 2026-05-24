@@ -174,15 +174,15 @@ body, html {
 
 /* Base layering with exact pixel coordinates and rotation */
 .j-z1 { z-index: 1; width: 663px; height: 663px; left: 447.5px; top: 91.8px; transform: rotate(0deg); }
-.j-z2 { z-index: 2; width: 486px; height: 486px; left: 610.5px; top: 335.8px; transform: rotate(0deg); }
+.j-z2 { z-index: 2; width: 486px; height: 486px; left: 640.5px; top: 335.8px; transform: rotate(0deg); }
 /* Swapped z3 and z4 */
 .j-z3 { z-index: 3; width: 580px; height: 580px; left: 190.5px; top: 305.8px; transform: rotate(0deg); }
-.j-z4 { z-index: 4; width: 528px; height: 528px; left: 815.5px; top: 261.8px; transform: rotate(0deg); }
+.j-z4 { z-index: 4; width: 528px; height: 528px; left: 800.5px; top: 261.8px; transform: rotate(0deg); }
 /* Flower tree anchored to viewport left, made larger, moved higher, and rotated right */
 .j-z5 { z-index: 5; width: 850px; height: 850px; left: calc(720px - 50vw / var(--scale) - 200px); top: -140px; transform: rotate(-15deg); }
 .j-z6 { z-index: 6; width: 572px; height: 572px; left: 441.5px; top: 479.8px; transform: rotate(0deg); }
 .j-z7 { z-index: 7; width: 214.4px; height: 214.4px; left: 265.9px; top: 200.1px; transform: rotate(9.3deg); }
-.j-z8 { z-index: 8; width: 312px; height: 312px; left: 1035.5px; top: 233.8px; transform: rotate(0deg); }
+.j-z8 { z-index: 8; width: 312px; height: 312px; left: 1035.5px; top: 170.8px; transform: rotate(0deg); }
 .j-z9 { z-index: 9; width: 445px; height: 445px; left: 1060.5px; top: 330.8px; transform: rotate(0deg); }
 .j-z10 { z-index: 10; width: 353px; height: 353px; left: 979.5px; top: 462.8px; transform: rotate(0deg); }
 .j-z11 { z-index: 11; width: 257px; height: 257px; left: 889.5px; top: 622.8px; transform: rotate(0deg); }
@@ -193,7 +193,7 @@ body, html {
 /* Left hand anchored to viewport left */
 .j-z15 { z-index: 15; width: 559px; height: 559px; left: calc(720px - 50vw / var(--scale) - 150px); top: 350px; transform: rotate(10deg); }
 /* Right hand anchored to viewport right edge, moved up and tilted down */
-.j-z16 { z-index: 16; width: 559px; height: 559px; left: calc(720px + 50vw / var(--scale) - 350px); top: -90px; transform: rotate(15deg); }
+.j-z16 { z-index: 16; width: 559px; height: 559px; left: calc(720px + 50vw / var(--scale) - 350px); top: -200px; transform: rotate(15deg); }
 
 /* Europe Scene */
 #europe-scene {
@@ -273,3 +273,67 @@ body, html {
   font-size: 3rem;
   margin-bottom: 10px;
 }
+
+/* =========================================
+   SCENE 4: VIETNAM
+   ========================================= */
+.vietnam-components {
+  position: absolute;
+  width: 1440px; 
+  height: 1000px;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.v-comp {
+  position: absolute;
+  object-fit: contain;
+  /* Hardware acceleration for smooth GSAP animation */
+  will-change: transform;
+}
+
+/* Vietnam Text Overlay */
+.v-text {
+  z-index: 20;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.v-text-year {
+  font-family: var(--font-primary);
+  font-size: 110px;
+  color: var(--color-red);
+  line-height: 0.8;
+  margin-bottom: 0;
+}
+
+.v-text-sub {
+  font-family: var(--font-secondary);
+  font-size: 70px;
+  color: #1a1a1a;
+  margin-top: -15px;
+}
+
+/* Component layers (scaled by 0.9, X offset +10px, Y offset +150px) */
+.v-z1 { z-index: 1; width: 309.6px; height: 309.6px; left: 852.5px; top: 170.9px; transform: rotate(2.5deg); }
+.v-z2 { z-index: 2; width: 771.2px; height: 771.2px; left: 67.5px; top: 110.7px; transform: rotate(0deg); }
+.v-z2-right { z-index: 2; width: 771.3px; height: 771.3px; left: 558.4px; top: 110.7px; transform: rotate(0deg); }
+.v-z3 { z-index: 3; width: 568.8px; height: 568.8px; left: 712.1px; top: 355.6px; transform: rotate(0deg); }
+.v-z4 { z-index: 4; width: 504.9px; height: 504.9px; left: 270.4px; top: 400.6px; transform: rotate(0deg); }
+.v-z5 { z-index: 5; width: 613.1px; height: 613.1px; left: 1080.6px; top: 70.8px; transform: rotate(0deg); }
+.v-z6 { z-index: 6; width: 320.7px; height: 320.7px; left: -100.4px; top: 500.2px; transform: rotate(0deg); }
+.v-z7 { z-index: 7; width: 362.7px; height: 362.7px; left: 1068.7px; top: 500.2px; transform: rotate(0deg); }
+.v-z8 { z-index: 8; width: 300.6px; height: 300.6px; left: 190.4px; top: 200.2px; transform: rotate(0deg); }
+.v-z9 { z-index: 9; width: 400.1px; height: 400.1px; left: -50.4px; top: 230px; transform: rotate(0deg); }
+.v-z10 { z-index: 10; width: 214.2px; height: 214.2px; left: -30.5px; top: 640.2px; transform: rotate(0deg); }
+.v-z11 { z-index: 11; width: 243.9px; height: 243.9px; left: 70.1px; top: 650.7px; transform: rotate(0deg); }
+.v-z12 { z-index: 12; width: 186.3px; height: 186.3px; left: 200.1px; top: 700.1px; transform: rotate(0deg); }
+.v-z13 { z-index: 13; width: 300.4px; height: 300.4px; left: -10.4px; top: 10.6px; transform: rotate(0deg); }
+.v-z14 { z-index: 14; width: 400.7px; height: 400.7px; left: 520.5px; top: 120.9px; transform: rotate(-12.8deg); }

@@ -17,6 +17,11 @@ function resizeScenes() {
   if (europeContainer) {
     europeContainer.style.transform = `translate(-50%, -50%) scale(${scale})`;
   }
+  
+  const vietnamContainer = document.querySelector('.vietnam-components');
+  if (vietnamContainer) {
+    vietnamContainer.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  }
 
   // Pass scale to CSS so we can anchor elements to the true viewport edges
   document.documentElement.style.setProperty('--scale', scale);
@@ -24,16 +29,17 @@ function resizeScenes() {
 window.addEventListener('resize', resizeScenes);
 resizeScenes();
 
-// Initial states for Japan and Europe components
+// Initial states for Japan, Europe and Vietnam components
 gsap.set(".j-comp", { y: 300, opacity: 0 });
 gsap.set(".e-comp", { y: 300, opacity: 0 });
+gsap.set(".v-comp", { y: 300, opacity: 0 });
 
 // Master Timeline pinned to the entire app container
 const masterTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#app",
     start: "top top",
-    end: "+=6000", // Increased scroll distance for smooth transitions across multiple scenes
+    end: "+=9000", // Increased scroll distance for smooth transitions across multiple scenes
     scrub: 1, // Add smoothing
     pin: true,
     anticipatePin: 1
@@ -87,6 +93,24 @@ masterTl.to(".e-comp", {
   stagger: 0.05,
   ease: "power2.out"
 }, 5.5);
+
+// Part 6: Transition Europe out (7.5 to 8.5 seconds)
+masterTl.to(".e-comp", {
+  y: -300,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.02,
+  ease: "power2.in"
+}, 7.5);
+
+// Part 7: Vietnam scene components slide up (8.5 to 10.5 seconds)
+masterTl.to(".v-comp", {
+  y: 0,
+  opacity: 1,
+  duration: 2,
+  stagger: 0.05,
+  ease: "power2.out"
+}, 8.5);
 
 // Add a buffer at the end so the scene holds on screen
 masterTl.to({}, { duration: 1 });
