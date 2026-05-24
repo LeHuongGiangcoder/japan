@@ -39,7 +39,7 @@ const masterTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#app",
     start: "top top",
-    end: "+=9000", // Increased scroll distance for smooth transitions across multiple scenes
+    end: "+=4500", // Reduced scroll distance for faster, smoother transitions between scenes
     scrub: 1, // Add smoothing
     pin: true,
     anticipatePin: 1
